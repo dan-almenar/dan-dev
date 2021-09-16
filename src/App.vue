@@ -1,15 +1,22 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="container">
+    <LangButton />
+    <Header />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import { mapState } from 'vuex'
+import Header from './components/Header'
+import LangButton from './components/LangButton'
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    LangButton,
+    Header
+  },
+  computed: {
+    ...mapState(['language'])
   }
 }
 </script>
@@ -22,5 +29,12 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  max-width: 1200px;
+}
+
+.container {
+  justify-self: center;
+  justify-items: center;
+  max-width: 1200px;
 }
 </style>

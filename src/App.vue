@@ -3,38 +3,53 @@
     <LangButton />
     <Header />
   </div>
+  <div class="content-block">
+    <ContentBlock
+    :cards="language != 'spanish' ? cardsSpanish : cardsEnglish"
+    />
+  </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
+import ContentBlock from './components/ContentBlock'
 import Header from './components/Header'
 import LangButton from './components/LangButton'
 export default {
   name: 'App',
   components: {
     LangButton,
-    Header
+    Header,
+    ContentBlock,
   },
   computed: {
-    ...mapState(['language'])
+    ...mapState(['language', 'cardsSpanish', 'cardsEnglish'])
   }
 }
 </script>
 
 <style>
 #app {
+  justify-items: center;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-  max-width: 1200px;
 }
 
 .container {
   justify-self: center;
   justify-items: center;
   max-width: 1200px;
+}
+
+.content-block {
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 30px;
+  margin: 0 200px;
 }
 </style>

@@ -1,15 +1,21 @@
 <template>
     <div class="container">
-        <button class="lang-btn">{{ language }}</button>
+        <button
+        @click="switchLanguage()"
+        class="lang-btn">{{ language }}
+        </button>
     </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 export default {
     name: 'LangButton',
     computed: {
         ...mapState(['language'])
+    },
+    methods: {
+        ...mapMutations(['switchLanguage'])
     }
 }
 </script>

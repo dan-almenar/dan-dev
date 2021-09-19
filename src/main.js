@@ -5,7 +5,9 @@ import App from './App.vue'
 const store = createStore({
     state(){
         return {
+            items: [],
             language: 'spanish',
+            showContent: false,
             currentCard: '',
 
             cardsSpanish: [
@@ -53,8 +55,15 @@ const store = createStore({
         },
         getCurrentCard(state, text){
             state.currentCard = text
-        }
-    }
+        },
+        switchShowContent(state, text){
+            if (state.currentCard != text){
+                state.showContent = true    
+            } else {
+                state.showContent = !state.showContent
+            }
+        },
+    },
 
 })
 

@@ -4,11 +4,14 @@
         <h3
         @mouseover="showExpandSpan()"
         @mouseleave="showExpandSpan()"
-        @click="getCurrentCard(getCard(card.text))"
+        @click="switchShowContent(getCard(card.text)), getCurrentCard(getCard(card.text))"
         class="card-title">{{ card.text }}
         <template
         v-if="showExpand">
-            <br/><span>{{language!='spanish' ? 'click para ampliar' : 'click to enlarge'}}</span>
+            <br/><span
+                :class="showContent ? 'hidden' : ''">
+                {{language!='spanish' ? 'click para ampliar' : 'click to enlarge'}}
+                </span>
         </template>
         </h3>
     </div>
@@ -24,10 +27,10 @@ export default {
         },
     },
     computed: {
-        ...mapState(['language', 'showExpand']),
+        ...mapState(['language', 'showExpand', 'showContent']),
     },
     methods: {
-        ...mapMutations(['showExpandSpan', 'getCurrentCard']),
+        ...mapMutations(['showExpandSpan', 'getCurrentCard', 'switchShowContent']),
         getCard(text){
             return text
         }
@@ -52,6 +55,10 @@ export default {
 span {
     color: gray;
     font-size: 1rem;
+}
+
+.hidden {
+    visibility: hidden;
 }
 
 </style>

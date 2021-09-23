@@ -1,28 +1,33 @@
 <template>
     <div class="container">
         <template v-if="showContent">
-        <h3 class="title">{{ currentCard }}</h3>
-        <div class="subgrid">
-            <p class="subtitle">subtitle
-                <br /><span class="description">description</span>
-                <br /><a class="url" href="google.com">link here</a>
-            </p>
-            <p class="subtitle">subtitle
-                <br /><span class="description">description</span>
-                <br /><a class="url" href="google.com">link here</a>
-            </p>
-            <p class="subtitle">subtitle
-                <br /><span class="description">description</span>
-                <br /><a class="url" href="google.com">link here</a>
-            </p>
-        </div>
+            <h3 class="title">{{ currentCard }}</h3>
+            <template v-for="content in setContent"
+            :key="content.id">
+            <div class="subgrid">
+                <p class="subtitle">{{ content.title }}
+                    
+                    <template v-if="setContent!=langsAndTools">
+                        <br /><span class="description">{{ content.description }}</span>
+                        <template v-if="content.url">
+                            <br /><a class="url" :href="content.url[0]">{{ content.url[1] }}</a>
+                        </template>
+                    </template>
+                    <template v-else>
+                        <ImagesGrid />
+                    </template>
+                </p>
+            </div>
+            </template>
         </template>
     </div>    
 </template>
 
 <script>
+//firebase related imports, initializer and variables
 import { initializeApp } from 'firebase/app'
-import { getFirestore, collection, getDocs } from 'firebase/firestore'
+import { getFirestore, getDocs, collection } from 'firebase/firestore'
+
 const firebaseConfig = {
     apiKey: "AIzaSyAdUV2x85G-CPpPpZkoZghpXZiVoIdiwFA",
     authDomain: "dan-developer.firebaseapp.com",
@@ -34,64 +39,93 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig)
 const db = getFirestore(app)
+const projectsSpanishData = collection(db, 'projects-spanish')
+const projectsEnglishData = collection(db, 'projects-english')
+const spanishBioData = collection(db, 'spanish')
+const englishBioData = collection(db, 'english')
 
-import { mapState } from 'vuex'
+// component related code
+import { mapState, mapGetters } from 'vuex'
+import ImagesGrid from './ImagesGrid'
 
 
 export default {
     name: 'ContentBody',
     data() {
         return {
-            langsAndTools: [],            
+            langsAndTools: {
+                //placeholder is needed so the ImagesGrid component renders properly
+                placeholder: ''
+            },
             projectsSpanish: [],
             projectsEnglish: [],
-            bio: [],
+            bio: {
+                spanish: [],
+                english: []
+            },
         }
     },
+    components: {
+        ImagesGrid,
+    },
+    // fetch the data from Firebase/Firestore
     mounted() {
         (async () => {
-            this.langsAndTools = []
-            let res = await getDocs(collection(db, 'langs-spanish'))
-            res.forEach(doc => {
-                this.langsAndTools.push(doc.data())
-            })
+            let res = await getDocs(spanishBioData)
+            res.forEach(doc => this.bio.spanish.push(doc.data()))
         })();
+
+        (async () => {
+            let res = await getDocs(englishBioData)
+            res.forEach(doc => this.bio.english.push(doc.data()))
+        })();
+                
         (async () => {
             this.projectsSpanish = []
-            let res = await getDocs(collection(db, 'projects-spanish'))
-            res.forEach(doc => {
-                this.projectsSpanish.push(doc.data())
-            })
+            let res = await getDocs(projectsSpanishData)
+            res.forEach(doc => this.projectsSpanish.push(doc.data()))
         })();
+
         (async () => {
             this.projectsEnglish = []
-            let res = await getDocs(collection(db, 'projects-english'))
+            let res = await getDocs(projectsEnglishData)
             res.forEach(doc => this.projectsEnglish.push(doc.data()))
-        })();
-        (async () => {
-            this.bio = []
-            let res = await getDocs(collection(db, 'bio'))
-            res.forEach(doc => this.bio.push(doc.data()))
         })();
     },
     computed: {
-        ...mapState(['currentCard', 'showContent'])
+        ...mapState(['currentCard', 'showContent', 'language']),
+        ...mapGetters({
+            contentInfo: 'langCard'
+        }),
+        
+        setContent(){
+            if (this.contentInfo.language != 'spanish'){
+                switch (this.contentInfo.currentCard){
+                    case 'Bio':
+                        return this.bio.spanish
+                    case 'Proyectos':
+                        return this.projectsSpanish
+                }
+            } else if (this.contentInfo.language !='english'){
+                switch (this.contentInfo.currentCard){
+                    case 'Bio':
+                        return this.bio.english
+                    case 'Projects':
+                        return this.projectsEnglish
+                }
+            }
+            return this.langsAndTools
+        },
     }
 }
-
-/*
-TO DO NEXT:
-Populate the component with the data fetched from Firebase accordingly.
-*/
-
 </script>
 
 <style scoped>
 .container {
     padding: 30px;
     display: grid;
+    max-width: 800px;
     grid-template-columns: 1fr 2fr;
-    gap: 20px;
 }
 
 .title {
@@ -104,10 +138,11 @@ Populate the component with the data fetched from Firebase accordingly.
 }
 
 .subgrid {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: subgrid;
+    grid-column: 2/3;
+    grid-template-columns: 1fr 2fr;
     justify-self: start;
-    margin-left: 20px;
+    margin-left: 40px;
 }
 
 .subtitle {
@@ -115,7 +150,6 @@ Populate the component with the data fetched from Firebase accordingly.
     color: blue;
     font-size: 1.7rem;
     font-weight: bold;
-    padding-top: 30px;
 }
 
 .description {
@@ -123,14 +157,11 @@ Populate the component with the data fetched from Firebase accordingly.
     text-align: left;
     font-size: 1.3rem;
     font-weight: 500;
-    margin-left: 40px;
 }
 
 .url {
-    font-weight: 400;
+    font-weight: bold;
     font-size: 1rem;
-    margin-left: 40px;
 }
-
 
 </style>

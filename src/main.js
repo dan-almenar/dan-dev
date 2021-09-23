@@ -53,16 +53,25 @@ const store = createStore({
         showExpandSpan(state){
             state.showExpand = !state.showExpand
         },
-        getCurrentCard(state, text){
-            state.currentCard = text
+        getCurrentCard(state, payload){
+            state.currentCard = payload
         },
-        switchShowContent(state, text){
-            if (state.currentCard != text){
+        switchShowContent(state, payload){
+            if (state.currentCard != payload){
                 state.showContent = true    
             } else {
                 state.showContent = !state.showContent
             }
         },
+    },
+    getters: {
+        langCard: state => {
+            return {
+                language: state.language,
+                currentCard: state.currentCard
+            }
+        }
+
     },
 
 })

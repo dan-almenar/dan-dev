@@ -28,7 +28,7 @@ export default {
     ContentBody,
   },
   computed: {
-    ...mapState(['language', 'cardsSpanish', 'cardsEnglish'])
+    ...mapState(['language', 'cardsSpanish', 'cardsEnglish', 'currentCard'])
   }
 }
 </script>

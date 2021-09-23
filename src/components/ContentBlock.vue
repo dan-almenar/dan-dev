@@ -2,9 +2,9 @@
     <div
     :key="card.id" v-for="card in cards">
         <h3
-        @mouseover="showExpandSpan()"
+        @mouseover="showExpandSpan(), getCurrentCard(getCard(card.text))"
         @mouseleave="showExpandSpan()"
-        @click="switchShowContent(getCard(card.text)), getCurrentCard(getCard(card.text))"
+        @click="switchShowContent(getCard(card.text))"
         class="card-title">{{ card.text }}
         <template
         v-if="showExpand">

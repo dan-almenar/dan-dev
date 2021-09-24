@@ -45,11 +45,14 @@ export default {
     color: blue;
     font-size: 2rem;
     align-self: center;
+    transition: .7s;
 }
 
 .card-title:hover {
-    border-top: 5px solid red;
-    border-bottom: 5px solid red;
+    border-top: 5px solid blue;
+    border-bottom: 5px solid blue;
+    color: red;
+    font-size: 2.5rem;
 }
 
 span {

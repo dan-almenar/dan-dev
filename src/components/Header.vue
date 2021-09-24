@@ -26,17 +26,24 @@ export default {
     display: grid;
     justify-self: start;
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    gap: 90px;
     max-width: 430px;
 }
 
 .profile-pic {
     width: 140px;
     height: 140px;
-    margin: 25px;
-    border: 4px solid blue;
+    margin: 40px;
+    border: 5px solid blue;
     border-radius: 100%;
     justify-self: end;
+    transition: 1s;
+}
+
+.profile-pic:hover{
+    width: 160px;
+    height: 160px;
+    border: 7px dashed black;
 }
 
 .title {
@@ -46,7 +53,7 @@ export default {
     justify-self: start;
     text-align: end;
     align-self: start;
-    grid-row: 2/3;
+    grid-row: 1/3;
     grid-column: 2/3;
 }
 
@@ -57,7 +64,7 @@ export default {
     text-align: start;
     font-weight: bold;
     grid-column: 1/3;
-    grid-row: 1/3;
+    grid-row: 2/3;
 }
 
 </style>

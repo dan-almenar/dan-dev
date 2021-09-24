@@ -59,8 +59,9 @@ export default {
 }
 
 .content-body {
-  justify-self: center;
+  justify-self:normal;
   max-width: 1200px;
+  min-width: 700px;
   margin: 0 200px;
 }
 </style>

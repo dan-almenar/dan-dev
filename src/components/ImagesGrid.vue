@@ -48,17 +48,20 @@ export default {
 <style scoped>
 .images-grid {
     display: inline-grid;
-    gap: 80px;
-    max-width: 180px;
+    gap: 65px;
 }
 
 .img-container {
-    margin: 20px 15px;
+    margin: 15px;
 }
 
 .img {
-    max-height: 60px;
-    margin: 5px;
+    max-height: 55px;
+    transition: .5s
+}
+
+.img:hover{
+    max-height: 70px;
 }
 
 </style>

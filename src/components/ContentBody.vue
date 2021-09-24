@@ -131,10 +131,10 @@ export default {
 .title {
     padding-right: 30px;
     color: blue;
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     border-right: 4px solid red;
     min-height: 150px;
-    align-self: center;
+    align-self: start;
 }
 
 .subgrid {
@@ -161,7 +161,7 @@ export default {
 
 .url {
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 
 </style>

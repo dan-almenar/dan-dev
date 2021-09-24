@@ -4,7 +4,7 @@
 
 ### You may go ahead and use my design if it pleases you, yet I'm no designer myself, I pretty much go by ear...
 
-### Note: This is a work in progress.
+### Note: You may see it live [here](https://dan-developer.web.app)
 
 ## Project setup
 ```

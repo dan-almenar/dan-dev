@@ -1,19 +1,13 @@
-<template>      
+<template>
+    <div class="container">      
         <div :key="card.id" v-for="card in cards">
             <h3
-            @mouseover="showExpandSpan(), getCurrentCard(getCard(card.text))"
-            @mouseleave="showExpandSpan()"
+            @mouseover="getCurrentCard(getCard(card.text))"
             @click="switchShowContent(getCard(card.text))"
             class="card-title">{{ card.text }}
-            <template
-            v-if="showExpand">
-                <br/><span
-                    :class="showContent ? 'hidden' : ''">
-                    {{language!='spanish' ? 'click para ampliar' : 'click to enlarge'}}
-                    </span>
-            </template>
             </h3>
-        </div>  
+        </div>
+    </div> 
 </template>
 
 <script>
@@ -38,11 +32,17 @@ export default {
 </script>
 
 <style scoped>
+.container {
+    display: grid;
+    justify-items: left;
+    grid-template-columns: repeat(3, 1fr);
+}
+
 .card-title {
     max-height: 150px;
-    padding: 30px 0px;
     color: blue;
     font-size: 2rem;
+    padding: 10px 0px;
     align-self: center;
     transition: .7s;
 }
@@ -50,17 +50,29 @@ export default {
 .card-title:hover {
     border-top: 5px solid blue;
     border-bottom: 5px solid blue;
-    color: white;
+    color: snow;
     font-size: 2.5rem;
 }
 
-span {
-    color: snow;
-    font-size: 1rem;
-}
 
-.hidden {
-    visibility: hidden;
+@media (max-width: 500px) {
+    .container{
+        position: absolute;
+        left: 0px;
+        margin: 0px 80px;
+        margin-bottom: 30px;
+    }
+
+    .card-title {
+        font-size: 1.2rem;
+        align-self: start;
+    }
+
+    .card-title:hover {
+        border-top: 3px solid blue;
+        border-bottom: 3px solid blue;
+        font-size: 1.4rem;
+    }
 }
 
 </style>

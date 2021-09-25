@@ -1,29 +1,25 @@
-<template>
-    
+<template>    
         <div class="container">
             <template v-if="showContent">
                 <h3 class="title">{{ currentCard }}</h3>
                 <template v-for="content in setContent"
                 :key="content.id">
                 <div class="subgrid">
-                    <p class="subtitle">{{ content.title }}
-                        
+                    <p class="subtitle">{{ content.title }}</p>                        
                         <template v-if="setContent!=langsAndTools">
-                            <br /><span class="description">{{ content.description }}</span>
+                            <span class="description">{{ content.description }}</span>
                             <template v-if="content.url">
-                                <br /><a class="url" :href="content.url[0]">{{ content.url[1] }}</a>
+                                <br /><br /><a class="url" :href="content.url[0]">{{ content.url[1] }}</a>
                             </template>
                         </template>
                         <template v-else>
                             <ImagesGrid />
                         </template>
-                    </p>
+                    
                 </div>
                 </template>
             </template>
-        </div> 
-
- 
+        </div>
 </template>
 
 <script>
@@ -128,13 +124,15 @@ export default {
     padding: 30px;
     display: grid;
     grid-template-columns: 1fr 2fr;
+    text-align: justify;
+    margin-right: 100px;
 }
 
 .title {
     padding-right: 30px;
     color: blue;
     font-size: 2.2rem;
-    border-right: 4px solid white;
+    border-right: 4px solid snow;
     min-height: 150px;
     align-self: start;
 }
@@ -144,7 +142,7 @@ export default {
     grid-column: 2/3;
     grid-template-columns: 1fr 2fr;
     justify-self: start;
-    margin-left: 40px;
+    margin-left: 10px;
 }
 
 .subtitle {
@@ -156,15 +154,43 @@ export default {
 
 .description {
     color:snow;
-    text-align: left;
+    text-align: justify;
     font-size: 1.3rem;
     font-weight: 500;
 }
 
 .url {
-    color: white;
+    color: snow;
     font-weight: bold;
     font-size: 1.2rem;
 }
 
+@media (max-width: 500px) {
+    .container {
+        position: absolute;
+        left: 0px;
+        margin-top: 50px;
+        margin-right: 0px;
+    }
+
+    .title {
+        font-size: 1.5rem
+    }
+
+    .subtitle {
+        font-size: 1.3rem;
+    }
+
+    .description {
+        font-size: 1.1rem;
+        line-height: 1.5rem;
+        
+    }
+
+    .url{
+        font-size: 1rem;
+        font-weight:bold;
+    }
+    
+}
 </style>

@@ -66,4 +66,18 @@ export default {
     max-height: 70px;
 }
 
+@media (max-width: 500px) {
+    .img-container {
+        margin: 10px;
+    }
+
+    .img {
+        max-height: 40px;
+    }
+
+    .img:hover {
+        max-height: 50px;
+    }
+}
+
 </style>

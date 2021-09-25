@@ -8,8 +8,8 @@ const store = createStore({
         return {
             items: [],
             language: 'spanish',
-            showContent: false,
-            currentCard: '',
+            showContent: true,
+            currentCard: 'Bio',
 
             cardsSpanish: [
                 {
@@ -59,7 +59,7 @@ const store = createStore({
         },
         switchShowContent(state, payload){
             if (state.currentCard != payload){
-                state.showContent = true    
+                state.showContent = false    
             } else {
                 state.showContent = !state.showContent
             }

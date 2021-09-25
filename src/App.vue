@@ -62,6 +62,11 @@ export default {
 
 .content-body {
   justify-self:normal;
-  margin: 0 200px;
+}
+
+@media (max-width: 500px){
+  .content-body {
+    margin-top: 60px;
+  }
 }
 </style>

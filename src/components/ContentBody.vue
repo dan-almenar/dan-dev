@@ -1,26 +1,29 @@
 <template>
-    <div class="container">
-        <template v-if="showContent">
-            <h3 class="title">{{ currentCard }}</h3>
-            <template v-for="content in setContent"
-            :key="content.id">
-            <div class="subgrid">
-                <p class="subtitle">{{ content.title }}
-                    
-                    <template v-if="setContent!=langsAndTools">
-                        <br /><span class="description">{{ content.description }}</span>
-                        <template v-if="content.url">
-                            <br /><a class="url" :href="content.url[0]">{{ content.url[1] }}</a>
+    
+        <div class="container">
+            <template v-if="showContent">
+                <h3 class="title">{{ currentCard }}</h3>
+                <template v-for="content in setContent"
+                :key="content.id">
+                <div class="subgrid">
+                    <p class="subtitle">{{ content.title }}
+                        
+                        <template v-if="setContent!=langsAndTools">
+                            <br /><span class="description">{{ content.description }}</span>
+                            <template v-if="content.url">
+                                <br /><a class="url" :href="content.url[0]">{{ content.url[1] }}</a>
+                            </template>
                         </template>
-                    </template>
-                    <template v-else>
-                        <ImagesGrid />
-                    </template>
-                </p>
-            </div>
+                        <template v-else>
+                            <ImagesGrid />
+                        </template>
+                    </p>
+                </div>
+                </template>
             </template>
-        </template>
-    </div>    
+        </div> 
+
+ 
 </template>
 
 <script>
@@ -124,7 +127,6 @@ export default {
 .container {
     padding: 30px;
     display: grid;
-    max-width: 800px;
     grid-template-columns: 1fr 2fr;
 }
 
@@ -132,7 +134,7 @@ export default {
     padding-right: 30px;
     color: blue;
     font-size: 2.2rem;
-    border-right: 4px solid red;
+    border-right: 4px solid white;
     min-height: 150px;
     align-self: start;
 }
@@ -153,13 +155,14 @@ export default {
 }
 
 .description {
-    color: black;
+    color:snow;
     text-align: left;
     font-size: 1.3rem;
     font-weight: 500;
 }
 
 .url {
+    color: white;
     font-weight: bold;
     font-size: 1.2rem;
 }

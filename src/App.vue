@@ -1,16 +1,16 @@
-<template>
-  <div class="container">
-    <LangButton />
-    <Header />
-  </div>
-  <div class="content-block">
-    <ContentBlock
-    :cards="language != 'spanish' ? cardsSpanish : cardsEnglish"
-    />
-  </div>
-  <div class="content-body">
-    <ContentBody />
-  </div>
+<template>  
+    <div class="container">
+      <LangButton />
+      <Header />
+    </div>
+    <div class="content-block">
+      <ContentBlock
+      :cards="language != 'spanish' ? cardsSpanish : cardsEnglish"
+      />
+    </div>
+    <div class="content-body">
+      <ContentBody />
+    </div>
 </template>
 
 <script>
@@ -34,6 +34,10 @@ export default {
 </script>
 
 <style>
+* {
+
+  background-color: #212121;
+}
 #app {
   justify-items: center;
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -47,21 +51,17 @@ export default {
 .container {
   justify-self: center;
   justify-items: center;
-  max-width: 1200px;
 }
 
 .content-block {
-  max-width: 1200px;
-  display: grid;
+  display: inline-flex;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 30px;
-  margin: 0 200px;
+  margin: 0 150px;
 }
 
 .content-body {
   justify-self:normal;
-  max-width: 1200px;
-  min-width: 700px;
   margin: 0 200px;
 }
 </style>

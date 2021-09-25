@@ -1,13 +1,13 @@
 <template>
-    <div class="container">
-        <img class="profile-pic" :src="require('@/assets/profile pic.png')" alt="Profile Pic">
-        <div class="wrapper">
-            <h1 class="title">Dan Developer</h1>
-            <h2 class="subtitle">Daniel Almenar Williams</h2>
-            <div></div>
+    
+        <div class="container">
+            <img class="profile-pic" :src="require('@/assets/profile pic.png')" alt="Profile Pic">
+            <div class="wrapper">
+                <h1 class="title">Dan Developer</h1>
+                <h2 class="subtitle">Daniel Almenar Williams</h2>
+                <div></div>
+            </div>
         </div>
-        
-    </div>
 </template>
 
 <script>
@@ -43,7 +43,6 @@ export default {
 .profile-pic:hover{
     width: 160px;
     height: 160px;
-    border: 7px dashed black;
 }
 
 .title {
@@ -58,7 +57,7 @@ export default {
 }
 
 .subtitle {
-    color: red;
+    color: white;
     font-size: 3rem;
     text-transform: uppercase;
     text-align: start;

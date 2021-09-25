@@ -1,10 +1,12 @@
 <template>
-    <div v-for="(img, imgIndex) in langsAndTools" :key="imgIndex"
-    class="images-grid">
-        <div class="img-container">
-            <img :title="img[1]" class="img" :src="require(`@/assets/langs/${img[0]}`)" :alt="img[1]">
+    
+        <div v-for="(img, imgIndex) in langsAndTools" :key="imgIndex"
+        class="images-grid">
+            <div class="img-container">
+                <img :title="img[1]" class="img" :src="require(`@/assets/langs/${img[0]}`)" :alt="img[1]">
+            </div>
         </div>
-    </div>    
+ 
 </template>
 
 <script>

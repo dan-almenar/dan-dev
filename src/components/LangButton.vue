@@ -10,7 +10,6 @@
 <script>
 import { mapState, mapMutations } from 'vuex'
 export default {
-    inject: ['mq'],
     name: 'LangButton',
     computed: {
         ...mapState(['language'])

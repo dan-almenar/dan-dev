@@ -10,6 +10,7 @@ const store = createStore({
             language: 'spanish',
             showContent: true,
             currentCard: 'Bio',
+            previousCard: '',
 
             cardsSpanish: [
                 {
@@ -51,17 +52,15 @@ const store = createStore({
                 state.language = 'spanish'
             }
         },
-        showExpandSpan(state){
-            state.showExpand = !state.showExpand
-        },
         getCurrentCard(state, payload){
+            state.previousCard = state.currentCard
             state.currentCard = payload
         },
-        switchShowContent(state, payload){
-            if (state.currentCard != payload){
-                state.showContent = false    
+        switchShowContent(state){
+            if (state.showContent === true && state.previousCard === state.currentCard){
+                state.showContent = false
             } else {
-                state.showContent = !state.showContent
+                state.showContent = true
             }
         },
     },
@@ -72,7 +71,6 @@ const store = createStore({
                 currentCard: state.currentCard
             }
         }
-
     },
 
 })

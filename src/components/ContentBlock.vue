@@ -2,9 +2,9 @@
     <div class="container">      
         <div :key="card.id" v-for="card in cards">
             <h3
-            @mouseover="getCurrentCard(getCard(card.text))"
-            @click="switchShowContent(getCard(card.text))"
-            class="card-title">{{ card.text }}
+                      
+            @click="getCurrentCard(getCard(card.text)), switchShowContent(getCard(card.text))" 
+            class='card-title'>{{ card.text }}
             </h3>
         </div>
     </div> 
@@ -26,7 +26,7 @@ export default {
         ...mapMutations(['showExpandSpan', 'getCurrentCard', 'switchShowContent']),
         getCard(text){
             return text
-        }
+        },
     }
 }
 </script>
@@ -54,13 +54,13 @@ export default {
     font-size: 2.5rem;
 }
 
-
-@media (max-width: 500px) {
+@media (max-width: 480px) {
     .container{
         position: absolute;
         left: 0px;
-        margin: 0px 80px;
+        margin: 0px 50px;
         margin-bottom: 30px;
+        gap: 15px;
     }
 
     .card-title {

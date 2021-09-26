@@ -56,7 +56,7 @@ export default {
     margin-top: -20px;
 }
 
-@media (max-width: 500px){
+@media (max-width: 480px){
     .container{
         grid-template-columns: 1fr 1fr;
         margin-right: 40px;

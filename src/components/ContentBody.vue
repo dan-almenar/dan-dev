@@ -104,12 +104,16 @@ export default {
                         return this.bio.spanish
                     case 'Proyectos':
                         return this.projectsSpanish
+                    case 'Projects':
+                        return this.projectsSpanish
                 }
             } else if (this.contentInfo.language !='english'){
                 switch (this.contentInfo.currentCard){
                     case 'Bio':
                         return this.bio.english
                     case 'Projects':
+                        return this.projectsEnglish
+                    case 'Proyectos':
                         return this.projectsEnglish
                 }
             }
@@ -165,7 +169,7 @@ export default {
     font-size: 1.2rem;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 480px) {
     .container {
         position: absolute;
         left: 0px;
@@ -174,7 +178,7 @@ export default {
     }
 
     .title {
-        font-size: 1.5rem
+        font-size: 1.4rem
     }
 
     .subtitle {

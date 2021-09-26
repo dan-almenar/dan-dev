@@ -16,31 +16,21 @@ export default {
         return {
             langsAndTools: [
                 ['01 python.png', 'Python'],
-                ['01 python - mathplotlib.png', 'Matplotlib'],
-                ['01 python dash.png', 'Dash'],
                 ['01 python django.png', 'Django'],
                 ['01 python flask.png', 'Flask'],
                 ['01 python jupyter notebook.png', 'Jupyter Notebook'],
-                ['01 python pandas.png', 'pandas'],
-                ['01 python plotly.png', 'Plotly'],
-                ['01 python scikit learn.png', 'Scikit Learn'],
                 ['02 golang.png', 'Golang'],
                 ['02 golang - 01 gingonic.png', 'GinGonic'],
                 ['03 javascript.png', 'JavaScript'],
                 ['03 javascript - node.png', 'NodeJS'],
-                ['03 javascript vue.png', 'Vue.js'],
-                ['03 javascript vuex.png', 'Vuex'],
                 ['04 html.png', 'HTML'],
                 ['05 css.png', 'CSS'],
                 ['tools bash.png', 'Bash / Terminal'],
                 ['tools docker.png', 'Docker'],
                 ['tools git.png', 'Git'],
-                ['tools google colab.png', 'Google Colab'],
                 ['tools google firebase.png', 'Firebase'],
-                ['tools pycharm.png', 'PyCharm'],
                 ['tools sql.png', 'SQL'],
                 ['tools ubuntu.png', 'Ubuntu Linux'],
-                ['tools vs code.png', 'VS Code'],
             ],
         }
     }
@@ -66,17 +56,17 @@ export default {
     max-height: 70px;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 480px) {
     .img-container {
         margin: 10px;
     }
 
     .img {
-        max-height: 40px;
+        max-height: 38px;
     }
 
     .img:hover {
-        max-height: 50px;
+        max-height: 45px;
     }
 }
 

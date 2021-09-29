@@ -1,47 +1,30 @@
 <template>    
-        <div class="container">
-            <template v-if="showContent">
-                <h3 class="title">{{ currentCard }}</h3>
-                <template v-for="content in setContent"
-                :key="content.id">
+    <div class="container">
+        <template v-if="showContent">
+            <h3 class="title">{{ currentCard }}</h3>
+            <template v-for="content in setContent"
+            :key="content.id">
                 <div class="subgrid">
                     <p class="subtitle">{{ content.title }}</p>                        
-                        <template v-if="setContent!=langsAndTools">
-                            <span class="description">{{ content.description }}</span>
-                            <template v-if="content.url">
-                                <br /><br /><a class="url" :href="content.url[0]">{{ content.url[1] }}</a>
-                            </template>
+                    <template v-if="setContent!=langsAndTools">
+                        <span class="description">{{ content.description }}</span>
+                        <template v-if="content.url">
+                            <br /><br /><a class="url" :href="content.url[0]">{{ content.url[1] }}</a>
                         </template>
-                        <template v-else>
-                            <ImagesGrid />
-                        </template>
-                    
+                    </template>
+                    <template v-else>
+                        <ImagesGrid />
+                    </template>          
                 </div>
-                </template>
             </template>
-        </div>
+        </template>
+    </div>
 </template>
 
 <script>
-//firebase related imports, initializer and variables
+//firebase related imports
 import { initializeApp } from 'firebase/app'
 import { getFirestore, getDocs, collection } from 'firebase/firestore'
-
-const firebaseConfig = {
-    apiKey: "AIzaSyAdUV2x85G-CPpPpZkoZghpXZiVoIdiwFA",
-    authDomain: "dan-developer.firebaseapp.com",
-    projectId: "dan-developer",
-    storageBucket: "dan-developer.appspot.com",
-    messagingSenderId: "770542344714",
-    appId: "1:770542344714:web:ade353744386b5ac179df3"
-}
-
-const app = initializeApp(firebaseConfig)
-const db = getFirestore(app)
-const projectsSpanishData = collection(db, 'projects-spanish')
-const projectsEnglishData = collection(db, 'projects-english')
-const spanishBioData = collection(db, 'spanish')
-const englishBioData = collection(db, 'english')
 
 // component related code
 import { mapState, mapGetters } from 'vuex'
@@ -69,6 +52,13 @@ export default {
     },
     // fetch the data from Firebase/Firestore
     mounted() {
+        const app = initializeApp(this.firebaseConfig)
+        const db = getFirestore(app)
+        const projectsSpanishData = collection(db, 'projects-spanish')
+        const projectsEnglishData = collection(db, 'projects-english')
+        const spanishBioData = collection(db, 'spanish')
+        const englishBioData = collection(db, 'english');
+        
         (async () => {
             let res = await getDocs(spanishBioData)
             res.forEach(doc => this.bio.spanish.push(doc.data()))
@@ -92,7 +82,13 @@ export default {
         })();
     },
     computed: {
-        ...mapState(['currentCard', 'showContent', 'language']),
+        ...mapState({
+            currentCard: 'currentCard',
+            showContent: 'showContent',
+            language: 'language',
+            firebaseConfig: 'firebaseConfig'
+        }),
+
         ...mapGetters({
             contentInfo: 'langCard'
         }),
@@ -171,9 +167,9 @@ export default {
 
 @media (max-width: 480px) {
     .container {
-        position: absolute;
+        position: relative;
+        top: 40px;
         left: 0px;
-        margin-top: 50px;
         margin-right: 0px;
     }
 

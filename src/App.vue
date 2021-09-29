@@ -11,10 +11,14 @@
     <div class="content-body">
       <ContentBody />
     </div>
+    <div class="contact-form">
+      <ContactForm />
+    </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
+import ContactForm from './components/ContactForm'
 import ContentBody from './components/ContentBody'
 import ContentBlock from './components/ContentBlock'
 import Header from './components/Header'
@@ -26,11 +30,13 @@ export default {
     Header,
     ContentBlock,
     ContentBody,
+    ContactForm,
   },
   computed: {
     ...mapState(['language', 'cardsSpanish', 'cardsEnglish', 'currentCard'])
   }
 }
+console.log('Welcome to Dan Dev\'s WebApp!')
 </script>
 
 <style>
@@ -64,7 +70,7 @@ export default {
   justify-self:normal;
 }
 
-@media (max-width: 500px){
+@media (max-width: 480px){
   .content-body {
     margin-top: 60px;
   }

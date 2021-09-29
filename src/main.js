@@ -40,8 +40,15 @@ const store = createStore({
                     text: 'Languages and Tools'
                 }
             ],
-                       
-            showExpand: false,
+
+            firebaseConfig: {
+                apiKey: "AIzaSyAdUV2x85G-CPpPpZkoZghpXZiVoIdiwFA",
+                authDomain: "dan-developer.firebaseapp.com",
+                projectId: "dan-developer",
+                storageBucket: "dan-developer.appspot.com",
+                messagingSenderId: "770542344714",
+                appId: "1:770542344714:web:ade353744386b5ac179df3"
+            },
         }
     },
     mutations: {

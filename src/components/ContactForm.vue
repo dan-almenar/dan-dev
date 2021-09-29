@@ -6,9 +6,9 @@
         <input v-model="email" class="input-box" type="email" name="email" id="email" :placeholder="lang != 'english'? 'Your email' : 'Su correo electrónico'" required><br>
         <input v-model="verifyEmail" class="input-box" type="email" name="emailverify" id="email-verify" :placeholder="lang != 'english' ? 'Verify your email' : 'Verifique su correo'" required><br>
         
-        
+        <template v-if="email != verifyEmail">
             <p :class="[this.email != this.verifyEmail ? 'span-alert' : 'hidden']">{{ lang !='english' ? 'Email fields don\'t match against each other. Please verify your email.' : 'La dirección de correo no coincide. Por favor, verifique su correo.'}}</p><br>
-        
+        </template>
 
         <textarea v-model="comment" class="comment-box" name="comment" id="comment" :placeholder="lang != 'english' ? 'Leave your message here...' : 'Deje su mensaje acá...'"></textarea><br>
         <input class="btn" type="submit" :value="lang != 'english' ? 'Submit' : 'Enviar'"><br>
@@ -168,7 +168,7 @@ export default {
     .comment-box {
         position: relative;
         right: 50px;
-        top: -30px;
+        top: -15px;
         width: 275px;
         height: 100px;
         font-size: 1rem;

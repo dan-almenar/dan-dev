@@ -159,7 +159,7 @@ export default {
 
     .span-alert {
         position: relative;
-        left: 40px;
+        left: -20px;
         width: 280px;
         height: 2rem;
 

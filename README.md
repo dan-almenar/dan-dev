@@ -2,9 +2,9 @@
 
 ### Personal WebApp that also serves me to get more Vue.js practice.
 
-### You may go ahead and use my design if it pleases you.
+### You may go ahead and use my design if it pleases you (spoiler: I'm no UI designer).
 
-### Note: While this remains a working project, you may see it live [here](https://dan-developer.web.app)
+### Note: You may see it live [here](https://dan-developer.web.app)
 
 ## Project setup
 ```

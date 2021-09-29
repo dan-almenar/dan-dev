@@ -6,9 +6,9 @@
         <input v-model="email" class="input-box" type="email" name="email" id="email" :placeholder="lang != 'english'? 'Your email' : 'Su correo electrónico'" required><br>
         <input v-model="verifyEmail" class="input-box" type="email" name="emailverify" id="email-verify" :placeholder="lang != 'english' ? 'Verify your email' : 'Verifique su correo'" required><br>
         
-        <template v-if="email !=verifyEmail">
-            <span class="span-alert">{{ lang !='english' ? 'Email fields don\'t match against each other. Please verify your email.' : 'La dirección de correo no coincide. Por favor, verifique su correo.'}}</span><br>
-        </template>
+        
+            <p :class="[this.email != this.verifyEmail ? 'span-alert' : 'hidden']">{{ lang !='english' ? 'Email fields don\'t match against each other. Please verify your email.' : 'La dirección de correo no coincide. Por favor, verifique su correo.'}}</p><br>
+        
 
         <textarea v-model="comment" class="comment-box" name="comment" id="comment" :placeholder="lang != 'english' ? 'Leave your message here...' : 'Deje su mensaje acá...'"></textarea><br>
         <input class="btn" type="submit" :value="lang != 'english' ? 'Submit' : 'Enviar'"><br>
@@ -91,6 +91,10 @@ export default {
     padding-left: 40px;
 }
 
+.hidden {
+    display: none;
+}
+
 .span-alert {
     color: snow;
     font-weight: 400;
@@ -153,10 +157,18 @@ export default {
         padding-left: 20px;
     }
 
+    .span-alert {
+        position: relative;
+        left: 40px;
+        width: 280px;
+        height: 2rem;
+
+    }
+
     .comment-box {
         position: relative;
         right: 50px;
-        top: -10px;
+        top: -30px;
         width: 275px;
         height: 100px;
         font-size: 1rem;
